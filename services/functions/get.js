@@ -1,12 +1,12 @@
 import handler from "../utils/handler";
 import dynamoDB from "../utils/dynamodb";
 
-export const main = handler(async (event) => {
+export const main = handler(async (event, userId) => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Key: {
       // The attributes of the item to be created
-      userId: "123", // The id of the author
+      userId, // The id of the author
       noteId: event.pathParameters.id,
     },
   };

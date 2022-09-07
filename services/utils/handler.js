@@ -4,7 +4,8 @@ export default function handler(lambda) {
   
       try {
         // Run the Lambda
-        body = await lambda(event, context);
+        const userId = event.requestContext.authorizer.iam.cognitoIdentity.identityId;
+        body = await lambda(event, userId, context);
         statusCode = 200;
       } catch (e) {
         console.error(e);

@@ -1,4 +1,5 @@
 import { ApiStack } from "./ApiStack";
+import { AuthStack } from "./AuthStack";
 import { StorageStack } from "./StorageStack";
 
 export default function main(app) {
@@ -11,5 +12,6 @@ export default function main(app) {
   });
   app
   .stack(StorageStack)
-  .stack(ApiStack);
+  .stack(ApiStack)
+  .stack(AuthStack)
 }
