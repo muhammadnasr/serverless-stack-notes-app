@@ -32,7 +32,7 @@ export default function Links() {
       />
 
       <Route
-        path="/notes/new"
+        path="/notes/add"
         element={
           <AuthenticatedRoute>
             <AddNote />

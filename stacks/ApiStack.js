@@ -6,6 +6,8 @@ export function ApiStack({ stack, app }) {
 
     // Create the API
     const api = new Api(stack, "Api", {
+        customDomain:
+            app.stage === "prod" ? "api.notes-demo.muhammad.engineer" : undefined,
         defaults: {
             authorizer: "iam",
             function: {
@@ -29,9 +31,9 @@ export function ApiStack({ stack, app }) {
 
     // Show the API endpoint in the output
     stack.addOutputs({
-        ApiEndpoint: api.url,
-    });
-
+        ApiEndpoint: api.customDomainUrl || api.url,
+      });
+      
     // Return the API resource
     return {
         api,
